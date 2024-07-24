@@ -4,7 +4,8 @@ import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 @RunWith(Cucumber.class)
 @CucumberOptions(
-		features={"src/test/resources/features/login.feature"}, 
+		features={"src/test/resources/features/login.feature",
+				"src/test/resources/features/mdashboard.feature"},
 		glue= {"StepDefinitions"},
 		plugin = { "pretty", "html:target/test.html" },
 		monochrome = true

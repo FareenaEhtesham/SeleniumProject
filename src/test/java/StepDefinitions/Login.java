@@ -16,13 +16,13 @@ public class Login{
 	Method methods = new Method(driver1);
 	
 		@Given("User is on the login page")
-		public void user_is_on_the_login_page() {
+		public void user_is_on_the_login_page() throws Exception {
 		  methods.getSite();
 		}
 
 		@When("click on username field and add name")
 		public void click_on_username_field_and_add_name() throws Exception {
-			methods.Login("standard_user", "secret_sauce");
+			methods.Login();
 		}
 
 		@Then("click on Password field and add password")
