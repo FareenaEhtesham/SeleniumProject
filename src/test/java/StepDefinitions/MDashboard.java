@@ -11,10 +11,13 @@ import io.cucumber.java.en.When;
 public class MDashboard {
 	
 	static WebDriver driver1 = driverClass.getDriver("chrome");
+	static driverClass driver;
 	Method methods = new Method(driver1);
 	
 	@Given("user is on dashboard page")
 	public void user_is_on_dashboard_page() throws Exception {
+		 methods.getSite();
+		 methods.Login();
 		 methods.assertDashboardPage();
 	}
 	

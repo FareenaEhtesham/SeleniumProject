@@ -27,8 +27,8 @@ public class Method extends locator{
 	driverClass obj;
 	public WebDriver driver ;
 	
-	public Method(WebDriver driver){
-	        this.driver = driver;
+	public Method(WebDriver driver1){
+	        this.driver = driver1;
 	    }
 	    
 	public String getDataFromConfigFile(String value) throws Exception {
@@ -52,6 +52,8 @@ public void enterText(By elementlocator, String dataValue) {
 		
 		try {
 			WebElement element =driver.findElement(elementlocator);
+			WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(60));
+	    	wait.until(ExpectedConditions.visibilityOfElementLocated(elementlocator));
 			element.sendKeys(dataValue);
 		}
 		catch(Exception e) {
@@ -64,6 +66,8 @@ public void enterText(By elementlocator, String dataValue) {
 		
 		try {
 			WebElement element =driver.findElement(elementlocator);
+			WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(60));
+	    	wait.until(ExpectedConditions.visibilityOfElementLocated(elementlocator));
 			element.click();
 		}
 		catch(Exception e) {
@@ -72,9 +76,9 @@ public void enterText(By elementlocator, String dataValue) {
 	}
 	
 	public void getSite() throws Exception {
-		//driver.get("https://www.saucedemo.com/");
+		
 		driver.get(getDataFromConfigFile("demoSite"));
-    	WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(60));
+		WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(60));
     	wait.until(ExpectedConditions.visibilityOfElementLocated(loginLogo));
 		
 	}
@@ -144,7 +148,7 @@ public void enterText(By elementlocator, String dataValue) {
     	
     	String beforeClick = driver.findElement(addCartbutton).getText();
     	System.out.println("Before click value was" + beforeClick);
-    	driver.findElement(addCartbutton).click();
+    	clickButton(addCartbutton);
     	String afterClick = driver.findElement(removeCartbutton).getText();
     	System.out.println("After click value is" + afterClick);
     	
